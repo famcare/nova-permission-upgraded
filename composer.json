@@ -1,5 +1,5 @@
 {
-    "name": "kiritokatklian/nova-permission",
+    "name": "famcare/nova-permission-upgraded",
     "description": "A Laravel Nova tool for Spatie's Permission library.",
     "keywords": [
         "laravel",
