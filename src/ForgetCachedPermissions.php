@@ -33,6 +33,10 @@ class ForgetCachedPermissions
             }
         }
 
+        if ($response instanceof \Symfony\Component\HttpFoundation\Response) {
+            $response->headers->set('X-Inertia', 'true');
+        }
+
         return $response;
     }
 }
