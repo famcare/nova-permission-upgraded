@@ -18,10 +18,10 @@ class PermissionBooleanGroup extends BooleanGroup
             $name,
             $attribute,
             $resolveCallback ?? static function (?Collection $permissions) {
-                return ($permissions ?? collect())->mapWithKeys(function (PermissionModel $permission) {
-                    return [$permission->name => true];
-                });
-            }
+            return ($permissions ?? collect())->mapWithKeys(function (PermissionModel $permission) {
+                return [$permission->name => true];
+            });
+        }
         );
 
         $permissionClass = app(PermissionRegistrar::class)->getPermissionClass();
@@ -35,13 +35,10 @@ class PermissionBooleanGroup extends BooleanGroup
 
     /**
      * @param NovaRequest $request
-     * @param string      $requestAttribute
-     * @param object      $model
-     * @param string      $attribute
      *
      * @return void
      */
-    protected function fillAttributeFromRequest(NovaRequest $request, string $requestAttribute, object $model, string $attribute): void
+    protected function fillAttributeFromRequest(NovaRequest $request, $requestAttribute, $model, $attribute): void
     {
         if (!in_array(HasPermissions::class, class_uses_recursive($model))) {
             throw new \InvalidArgumentException('The $model parameter of type ' . $model::class . ' must implement ' . HasPermissions::class);

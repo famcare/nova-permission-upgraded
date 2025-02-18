@@ -18,10 +18,10 @@ class RoleBooleanGroup extends BooleanGroup
             $name,
             $attribute,
             $resolveCallback ?? static function (?Collection $roles) {
-                return ($roles ?? collect())->mapWithKeys(function (RoleModel $role) {
-                    return [$role->name => true];
-                });
-            }
+            return ($roles ?? collect())->mapWithKeys(function (RoleModel $role) {
+                return [$role->name => true];
+            });
+        }
         );
 
         $roleClass = app(PermissionRegistrar::class)->getRoleClass();
@@ -35,13 +35,10 @@ class RoleBooleanGroup extends BooleanGroup
 
     /**
      * @param NovaRequest $request
-     * @param string      $requestAttribute
-     * @param object      $model
-     * @param string      $attribute
      *
      * @return void
      */
-    protected function fillAttributeFromRequest(NovaRequest $request, string $requestAttribute, object $model, string $attribute): void
+    protected function fillAttributeFromRequest(NovaRequest $request, $requestAttribute, $model, $attribute): void
     {
         if (!in_array(HasRoles::class, class_uses_recursive($model))) {
             throw new \InvalidArgumentException('The $model parameter of type ' . $model::class . ' must implement ' . HasRoles::class);
