@@ -32,13 +32,13 @@ class RoleSelect extends Select
 
     /**
      * @param NovaRequest $request
-     * @param string      $requestAttribute
-     * @param object      $model
-     * @param string      $attribute
+     * @param mixed $requestAttribute
+     * @param mixed $model
+     * @param mixed $attribute
      *
      * @return void
      */
-    protected function fillAttributeFromRequest(NovaRequest $request, string $requestAttribute, object $model, string $attribute): void
+    protected function fillAttributeFromRequest(NovaRequest $request, mixed $requestAttribute, mixed $model, mixed $attribute): void
     {
         if (!in_array(HasRoles::class, class_uses_recursive($model))) {
             throw new \InvalidArgumentException('The $model parameter of type ' . $model::class . ' must implement ' . HasRoles::class);
